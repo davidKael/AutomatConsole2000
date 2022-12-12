@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace AutomatConsole2000.PageComponents.ChildClasses
 {
+    /// <summary>
+    /// A textComponent that specificly displays MachineBalance 
+    /// </summary>
     internal class MachineBalanceComp : TextComponent
     {
         public override string Text { get { return GetDisplayData(); } }
@@ -22,6 +25,7 @@ namespace AutomatConsole2000.PageComponents.ChildClasses
         {
             string text;
 
+            //if no store is set it returns null, otherwise it returns the current machine balance
             if (_store == null)
             {
                 text = "0";

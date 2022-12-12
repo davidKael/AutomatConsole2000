@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace AutomatConsole2000.PageComponents.ChildClasses.SelectionListComponent
 {
+    /// <summary>
+    /// Used by SelectionListComponent to store a list option and an generic object if desired
+    /// </summary>
     internal class ListOption
     {
         public string Text { get; }

@@ -1,6 +1,7 @@
 ﻿using Automat_Console.Items;
 using Automat_Console.Products;
 using AutomatConsole2000.Control;
+using AutomatConsole2000.Helpers;
 using AutomatConsole2000.PageComponents.ChildClasses;
 using AutomatConsole2000.PageComponents.ChildClasses.SelectionListComponent;
 using AutomatConsole2000.Pages;
@@ -8,10 +9,18 @@ using AutomatConsole2000.Pages.ChildClasses;
 
 namespace Automat_Console.Pages
 {
+
+    /// <summary>
+    /// Page to let user see and interact with all the products the user has collected
+    /// </summary>
     internal class UserProductBagPage : Page, IExitable, ISelecter, IReDirecter
     {
         public override string Title => "User Bag";
 
+
+        /// <summary>
+        /// To show a text when using a product
+        /// </summary>
         public TextComponent UseText { get; set; } = new TextComponent();
 
 
@@ -22,7 +31,7 @@ namespace Automat_Console.Pages
 
         Page? ReturnPage;
 
-
+        //Product currently detailed
         Product? DetailedProduct;
 
         List<ListOption> _options = new List<ListOption>();
@@ -85,6 +94,10 @@ namespace Automat_Console.Pages
             NextPage = new ExitPage(this);
         }
 
+
+        /// <summary>
+        /// Use Product when selecting it
+        /// </summary>
         public void SelectObject()
         {
             if (SelectionList?.OptionAtCurrIndex?.Obj is Product)
@@ -93,9 +106,15 @@ namespace Automat_Console.Pages
 
                 UseText.Text = $"{p.Name}: {p.Use()}";
 
+
+                //when user has used product it disappears from the bag
                 UserSession.UserProductBag.Remove(p);
             }
         }
+
+        /// <summary>
+        /// To show product details
+        /// </summary>
         void ShowProductDetails()
         {
             var p = SelectionList?.OptionAtCurrIndex?.Obj as Product;
@@ -132,24 +151,15 @@ namespace Automat_Console.Pages
 
             List<Product> bag = UserSession.UserProductBag;
 
-
-
-
-
-
             List<string> formatedProducts = Product.GetPrintableData(bag, highlighted: DetailedProduct, false);
 
 
             for (int i = 0; i < bag.Count; i++)
             {
-
-
                 _options.Add(new ListOption(formatedProducts[i], bag[i]));
 
 
-
             };
-
 
             _options.Add(new ListOption("Back", ReturnPage));
 

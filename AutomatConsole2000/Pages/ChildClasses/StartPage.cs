@@ -1,11 +1,16 @@
 ﻿using Automat_Console.Pages;
 using AutomatConsole2000.Control;
+using AutomatConsole2000.Helpers;
 using AutomatConsole2000.PageComponents.ChildClasses;
 using AutomatConsole2000.PageComponents.ChildClasses.SelectionListComponent;
 using System.ComponentModel.DataAnnotations;
 
 namespace AutomatConsole2000.Pages.ChildClasses
 {
+
+    /// <summary>
+    /// Initial page
+    /// </summary>
     internal class StartPage : Page, ISelecter, IExitable
     {
         public override string? Title { get; } = "Main Menu";

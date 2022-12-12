@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AutomatConsole2000.PageComponents.ChildClasses
 {
+    /// <summary>
+    /// Use for labels, titles etc.
+    /// </summary>
     internal class TextComponent : PageComponent
     {
         public virtual string Text { get; set; }

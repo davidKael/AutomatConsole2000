@@ -1,4 +1,5 @@
 ﻿using AutomatConsole2000.Control;
+using AutomatConsole2000.Helpers;
 using AutomatConsole2000.PageComponents.ChildClasses;
 using AutomatConsole2000.PageComponents.ChildClasses.SelectionListComponent;
 using AutomatConsole2000.Pages;
@@ -7,6 +8,9 @@ using AutomatConsole2000.Pages.ChildClasses;
 
 namespace Automat_Console.Pages
 {
+    /// <summary>
+    /// Page for showing and choosing product category
+    /// </summary>
     internal class ChooseCategoryPage : Page, IReDirecter, IExitable, ISelecter
     {
         public override string Title { get; } = "Store";
@@ -17,7 +21,7 @@ namespace Automat_Console.Pages
 
         public SelectionListComponent SelectionList { get; set; }
 
-
+        //Page to return to if user chooses to go back
         Page? ReturnPage;
 
         List<ListOption> _options = new List<ListOption>();
@@ -26,13 +30,12 @@ namespace Automat_Console.Pages
         {
             ReturnPage= returnPage;
 
-            
-
-            
             SelectionList = new SelectionListComponent(_options, "Categories");
 
+            //adds the components in order, sets "true" to focus
             AddComponent(ListText);
             AddComponent(SelectionList, true);
+
             Refresh();
         }
 

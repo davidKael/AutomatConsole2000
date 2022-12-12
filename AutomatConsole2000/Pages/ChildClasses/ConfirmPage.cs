@@ -1,4 +1,5 @@
 ﻿using AutomatConsole2000.Control;
+using AutomatConsole2000.Helpers;
 using AutomatConsole2000.PageComponents.ChildClasses;
 using AutomatConsole2000.PageComponents.ChildClasses.SelectionListComponent;
 using System;
@@ -11,12 +12,18 @@ using System.Threading.Tasks;
 
 namespace AutomatConsole2000.Pages.ChildClasses
 {
+    /// <summary>
+    /// Page to give a "ok" or "no" Question to user, and redirect accordingly
+    /// </summary>
     internal class ConfirmPage : Page, IReDirecter
     {
         public override string? Title { get; }
         public SelectionListComponent SelectionList { get; set; }
 
+        //where to redirect if a ok is given by user
         Page YesRedirect;
+
+        //where to redirect if a no is given by user
         Page NoRedirect;
 
         TextComponent TextMessage;
@@ -44,6 +51,8 @@ namespace AutomatConsole2000.Pages.ChildClasses
 
         public void Redirect()
         {
+
+            //sets the selected page as the redirecting page
             var page = SelectionList?.OptionAtCurrIndex?.Obj as Page;
 
             if (page is Page)
@@ -62,8 +71,11 @@ namespace AutomatConsole2000.Pages.ChildClasses
             {
                 if (SelectionList.OptionAtCurrIndex?.Obj is Page)
                 {
+                    //creates a new control
                     var goTo = InputHandler.CreateControl(ConsoleKey.Enter, "Select", Redirect);
 
+
+                    //add the control to the output of CustomControls
                     output.Add(goTo.Key, goTo.Value);
                 }
 

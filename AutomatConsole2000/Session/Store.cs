@@ -11,20 +11,25 @@ using System.Text;
 
 namespace Automat_Console
 {
+    /// <summary>
+    /// Store is the holder of the Automat's products
+    /// </summary>
     internal class Store
     {
-
+        //where all the products is stored
        private List<Product> _stock = new List<Product>();
 
       
-
+        /// <summary>
+        /// Current balance of machine / store
+        /// </summary>
         public double MachineBalance { get; private set; }
 
 
 
         public Store() 
         {
-            //test
+           
             LoadProducts();
         }
 
@@ -96,12 +101,18 @@ namespace Automat_Console
             }
         }
 
+
+        /// <summary>
+        /// Tries to take the Machine balance and return it as coins to given wallet
+        /// </summary>
+        /// <param name="wallet"></param>
+        /// <returns></returns>
         bool TryWidthdraw(Wallet wallet)
         {
 
             double tempBalance = MachineBalance;
 
-
+            //calulating how many of each coin
             int tensCount = (int)Math.Floor(tempBalance / 10);
             tempBalance -= tensCount * 10;
             int fivesCount = (int)Math.Floor(tempBalance / 5);
@@ -114,7 +125,10 @@ namespace Automat_Console
 
             if (diff > 0)
             {
+                //fills wallet with change
                 wallet.FillWallet(onesCount, fivesCount, tensCount);
+
+                //updates current balance
                 MachineBalance = tempBalance;
                 return true;
             }
@@ -127,6 +141,10 @@ namespace Automat_Console
 
         }
 
+        /// <summary>
+        /// Returns all product categories
+        /// </summary>
+        /// <returns></returns>
         public string[] GetProductCategoryNames()
         {
             List<string> output = new List<string>();
@@ -138,13 +156,22 @@ namespace Automat_Console
             return output.ToArray();
         }
 
+
+        /// <summary>
+        /// returns a product of given name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public Product? GetProduct(string name)
         {
             Product? outProduct = _stock.Find(p => p.Name == name);
             return outProduct;
         }
 
-        //test-------------------------------------------------------------------------------------------------------------------------------------------------
+
+        /// <summary>
+        /// Loads some hardcoded products
+        /// </summary>
         void LoadProducts()
         {
 

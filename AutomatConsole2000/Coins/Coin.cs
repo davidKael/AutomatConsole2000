@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Automat_Console
 {
+    /// <summary>
+    /// Used as currency in Application
+    /// </summary>
     internal abstract class Coin
     {
         public abstract string Name { get; }
