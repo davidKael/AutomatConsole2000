@@ -42,11 +42,11 @@ Innehållet i “Use”, “Description” och “Buy” satte jag i underklasse
 
 Som tidigare nämnt så finns det mynt användaren använder för att fylla maskinens balans. Dessa mynt-objekt ärver från abstrakta klassen “Coin”.  Ett mynt har ett namn och ett värde, dessa är hårdkodade i underklasserna. Totalt finns det tre underklasser: 
 
--OneCrown: värd 1 
+- OneCrown: värd 1 
 
--FiveCrown: värd 5 
+- FiveCrown: värd 5 
 
--TenCrown: värd 10 
+- TenCrown: värd 10 
 
  
 
