@@ -1,6 +1,6 @@
 # Inlämningsuppgift 1 
 
-## Konsol Automat - David Nilsson 
+## Konsol-Automat - David Nilsson 
 #
 
 ## Applikationen 
